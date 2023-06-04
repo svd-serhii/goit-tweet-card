@@ -1,12 +1,13 @@
-import Card from 'components/Card/Card';
-import { Container } from 'components/Card/Card.styled';
+import AppBar from 'components/AppBar/AppBar';
+import { UserRoutes } from 'components/UserRoutes/UserRoutes';
 import React from 'react';
 
 const App = () => {
   return (
-    <Container>
-      <Card />
-    </Container>
+    <>
+      <AppBar />
+      <UserRoutes />
+    </>
   );
 };
 

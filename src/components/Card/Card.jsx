@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   Button,
+  CardContainer,
   ImageContainer,
   Info,
   Line,
@@ -53,19 +54,21 @@ const Card = () => {
   console.log(follow);
   return (
     <>
-      <ImageContainer>
-        <Logo src={logoGoIt} alt="Logo GoIT" />
-        <Picture src={picture} alt="Chat picture" />
-        <Line src={line} alt="Line" />
-        <Avatar src={avatar} alt="Avatar" />
-      </ImageContainer>
-      <TextContainer>
-        <Info>777 TWEETS </Info>
-        <Info>{count} FOLLOWERS</Info>
-      </TextContainer>
-      <Button filled={follow} type="button" onClick={ClickHandler}>
-        {!follow ? 'FOLLOW' : 'FOLLOWING'}
-      </Button>
+      <CardContainer>
+        <ImageContainer>
+          <Logo src={logoGoIt} alt="Logo GoIT" />
+          <Picture src={picture} alt="Chat picture" />
+          <Line src={line} alt="Line" />
+          <Avatar src={avatar} alt="Avatar" />
+        </ImageContainer>
+        <TextContainer>
+          <Info>777 TWEETS </Info>
+          <Info>{count} FOLLOWERS</Info>
+        </TextContainer>
+        <Button filled={follow} type="button" onClick={ClickHandler}>
+          {!follow ? 'FOLLOW' : 'FOLLOWING'}
+        </Button>
+      </CardContainer>
     </>
   );
 };

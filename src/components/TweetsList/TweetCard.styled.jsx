@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+export const ListItem = styled.li``;
+
+export const ImageContainer = styled.div``;
+
 export const CardContainer = styled.div`
-  position: absolute;
   width: 380px;
   height: 460px;
-  margin-top: 20px;
 
   background: linear-gradient(
     114.99deg,
@@ -17,43 +19,34 @@ export const CardContainer = styled.div`
   border-radius: 20px;
 `;
 
-export const ImageContainer = styled.div``;
-
 export const Logo = styled.img`
-  position: absolute;
+  margin-top: 20px;
+  margin-left: 20px;
   width: 76px;
   height: 22px;
-  left: 20px;
-  top: 20px;
 `;
 
 export const Picture = styled.img`
-  position: absolute;
   width: 308px;
   height: 168px;
-  left: 36px;
-  top: 28px;
+  margin-left: 36px;
 `;
-
-export const Avatar = styled.img`
-  position: absolute;
+export const Frame = styled.img`
   width: 80px;
   height: 80px;
-  left: 150px;
-  top: 178px;
+  margin-top: 0px;
+`;
+export const Avatar = styled.img`
+  width: 52px;
+  height: 52px;
 `;
 
 export const Line = styled.img`
-  position: absolute;
   width: 380px;
   height: 8px;
-  left: 0px;
-  top: 214px;
 `;
 
-export const TextContainer = styled.div`
-  margin-top: 284px;
-`;
+export const TextContainer = styled.div``;
 
 export const Info = styled.div`
   display: flex;
