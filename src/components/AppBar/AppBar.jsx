@@ -1,12 +1,15 @@
 import React from 'react';
 import { Header } from './AppBar.styled';
 import NavBar from 'components/NavBar/NavBar';
+import Container from 'components/Container/Container';
 
 const AppBar = () => {
   return (
-    <Header>
-      <NavBar />
-    </Header>
+    <Container>
+      <Header>
+        <NavBar />
+      </Header>
+    </Container>
   );
 };
 

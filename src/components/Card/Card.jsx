@@ -8,6 +8,7 @@ import {
   Line,
   Logo,
   Picture,
+  Section,
   TextContainer,
 } from './Card.styled';
 
@@ -54,21 +55,23 @@ const Card = () => {
   console.log(follow);
   return (
     <>
-      <CardContainer>
-        <ImageContainer>
-          <Logo src={logoGoIt} alt="Logo GoIT" />
-          <Picture src={picture} alt="Chat picture" />
-          <Line src={line} alt="Line" />
-          <Avatar src={avatar} alt="Avatar" />
-        </ImageContainer>
-        <TextContainer>
-          <Info>777 TWEETS </Info>
-          <Info>{count} FOLLOWERS</Info>
-        </TextContainer>
-        <Button filled={follow} type="button" onClick={ClickHandler}>
-          {!follow ? 'FOLLOW' : 'FOLLOWING'}
-        </Button>
-      </CardContainer>
+      <Section>
+        <CardContainer>
+          <ImageContainer>
+            <Logo src={logoGoIt} alt="Logo GoIT" />
+            <Picture src={picture} alt="Chat picture" />
+            <Line src={line} alt="Line" />
+            <Avatar src={avatar} alt="Avatar" />
+          </ImageContainer>
+          <TextContainer>
+            <Info>777 TWEETS </Info>
+            <Info>{count} FOLLOWERS</Info>
+          </TextContainer>
+          <Button filled={follow} type="button" onClick={ClickHandler}>
+            {!follow ? 'FOLLOW' : 'FOLLOWING'}
+          </Button>
+        </CardContainer>
+      </Section>
     </>
   );
 };

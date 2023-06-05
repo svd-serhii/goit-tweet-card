@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const Section = styled.div`
+  display: flex;
+
+  justify-content: center;
+`;
+
 export const CardContainer = styled.div`
   position: absolute;
   width: 380px;
