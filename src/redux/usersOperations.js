@@ -24,3 +24,15 @@ export const getUser = createAsyncThunk(
     }
   }
 );
+
+export const editUser = createAsyncThunk(
+  'users/editUser',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await API.patchUser();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

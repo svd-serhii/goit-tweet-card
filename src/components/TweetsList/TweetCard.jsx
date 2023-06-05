@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUser } from 'redux/usersOperations';
 import {
   Avatar,
   Button,
@@ -20,23 +18,34 @@ import picture from '../../images/picture@2x.png';
 import line from '../../images/line@2x.png';
 import frame from '../../images/frame.png';
 
+const initialUser = JSON.parse(localStorage.getItem('following-user'));
+
 const TweetCard = item => {
   const [follow, setFollow] = useState(false);
-  // const users = useSelector(state => state.users.items);
-  const dispatch = useDispatch();
+  const [following, setFollowing] = useState(initialUser || []);
 
   useEffect(() => {
-    window.localStorage.setItem('follow', follow);
+    localStorage.setItem('follow', follow);
+    localStorage.setItem('following-user', JSON.stringify(following));
   });
 
-  const ClickHandler = () => {
-    dispatch(getUser(item.id));
+  const ClickHandler = e => {
+    const userId = e.currentTarget.dataset.id;
+
     if (!follow) {
       setFollow(true);
     }
     if (follow) {
       setFollow(false);
     }
+
+    if (following.includes(userId)) {
+      setFollowing(prevState => prevState.filter(id => id !== userId));
+    } else {
+      setFollowing(prevState => [...prevState, userId]);
+    }
+
+    localStorage.setItem('following-users', JSON.stringify(following));
   };
 
   function formatNumber(num) {
@@ -52,15 +61,25 @@ const TweetCard = item => {
             <Picture src={picture} alt="Chat picture" />
             <Line src={line} alt="Line" />
             <Frame src={frame} alt="Avatar Frame"></Frame>
-            <Avatar src={item.avatar} alt="Avatar" />
+            <Avatar src={item.avatar} alt={item.user} />
           </ImageContainer>
 
           <TextContainer>
             <Info>{item.tweets} TWEETS </Info>
-            <Info>{formatNumber(item.followers)} FOLLOWERS</Info>
+            <Info>
+              {following.includes(item.id)
+                ? formatNumber(item.followers + 1)
+                : formatNumber(item.followers)}{' '}
+              FOLLOWERS
+            </Info>
           </TextContainer>
-          <Button filled={follow} type="button" onClick={ClickHandler}>
-            {!follow ? 'FOLLOW' : 'FOLLOWING'}
+          <Button
+            filled={follow}
+            type="button"
+            onClick={ClickHandler}
+            data-id={item.id}
+          >
+            {!following.includes(item.id) ? 'FOLLOW' : 'FOLLOWING'}
           </Button>
         </CardContainer>
       </ListItem>

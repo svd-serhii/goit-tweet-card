@@ -13,3 +13,8 @@ export const getUserById = async id => {
   const { data } = await instance.get(`/${id}`);
   return data;
 };
+
+export const patchUser = async user => {
+  const { data } = await instance.patch(`/users/${user.id}`);
+  return data;
+};

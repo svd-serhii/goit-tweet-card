@@ -42,6 +42,10 @@ const Card = () => {
   });
 
   const ClickHandler = () => {
+    if (count > initialState.followers) {
+      setFollow(true);
+      setCount(count - 1);
+    }
     if (!follow) {
       setFollow(true);
       setCount(count + 1);
