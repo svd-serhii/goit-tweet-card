@@ -21,23 +21,14 @@ import frame from '../../images/frame.png';
 const initialUser = JSON.parse(localStorage.getItem('following-user'));
 
 const TweetCard = item => {
-  const [follow, setFollow] = useState(false);
   const [following, setFollowing] = useState(initialUser || []);
 
   useEffect(() => {
-    localStorage.setItem('follow', follow);
     localStorage.setItem('following-user', JSON.stringify(following));
-  });
+  }, [following]);
 
   const ClickHandler = e => {
     const userId = e.currentTarget.dataset.id;
-
-    if (!follow) {
-      setFollow(true);
-    }
-    if (follow) {
-      setFollow(false);
-    }
 
     if (following.includes(userId)) {
       setFollowing(prevState => prevState.filter(id => id !== userId));
@@ -45,7 +36,7 @@ const TweetCard = item => {
       setFollowing(prevState => [...prevState, userId]);
     }
 
-    localStorage.setItem('following-users', JSON.stringify(following));
+    localStorage.setItem('following-user', JSON.stringify(following));
   };
 
   function formatNumber(num) {
@@ -65,7 +56,7 @@ const TweetCard = item => {
           </ImageContainer>
 
           <TextContainer>
-            <Info>{item.tweets} TWEETS </Info>
+            <Info>{formatNumber(item.tweets)} TWEETS </Info>
             <Info>
               {following.includes(item.id)
                 ? formatNumber(item.followers + 1)
@@ -74,7 +65,7 @@ const TweetCard = item => {
             </Info>
           </TextContainer>
           <Button
-            filled={follow}
+            filled={!following.includes(item.id) ? false : true}
             type="button"
             onClick={ClickHandler}
             data-id={item.id}
