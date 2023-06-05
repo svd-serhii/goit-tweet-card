@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUsers } from './usersOperations';
+import { fetchUsers, getUser } from './usersOperations';
 
 const initialState = {
   items: [],
@@ -20,5 +20,15 @@ export const usersSlice = createSlice({
         state.items = payload;
       })
       .addCase(fetchUsers.rejected, (state, action) => state);
+
+    builder
+      .addCase(getUser.pending, (state, { payload }) => state)
+      .addCase(getUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = null;
+        const index = state.items.findIndex(item => item.id === payload?.id);
+        state.items.splice(index, 1, payload);
+      })
+      .addCase(getUser.rejected, (state, action) => state);
   },
 });

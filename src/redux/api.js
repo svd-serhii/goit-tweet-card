@@ -8,3 +8,8 @@ export const getUsers = async () => {
   const { data } = await instance.get('/');
   return data;
 };
+
+export const getUserById = async id => {
+  const { data } = await instance.get(`/${id}`);
+  return data;
+};

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser } from 'redux/usersOperations';
 import {
   Avatar,
   Button,
@@ -20,12 +22,15 @@ import frame from '../../images/frame.png';
 
 const TweetCard = item => {
   const [follow, setFollow] = useState(false);
+  // const users = useSelector(state => state.users.items);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.localStorage.setItem('follow', follow);
   });
 
   const ClickHandler = () => {
+    dispatch(getUser(item.id));
     if (!follow) {
       setFollow(true);
     }
@@ -34,7 +39,10 @@ const TweetCard = item => {
     }
   };
 
-  console.log(follow);
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
+
   return (
     <>
       <ListItem>
@@ -49,7 +57,7 @@ const TweetCard = item => {
 
           <TextContainer>
             <Info>{item.tweets} TWEETS </Info>
-            <Info>{item.followers} FOLLOWERS</Info>
+            <Info>{formatNumber(item.followers)} FOLLOWERS</Info>
           </TextContainer>
           <Button filled={follow} type="button" onClick={ClickHandler}>
             {!follow ? 'FOLLOW' : 'FOLLOWING'}

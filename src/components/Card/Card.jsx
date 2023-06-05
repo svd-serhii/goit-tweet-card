@@ -52,7 +52,10 @@ const Card = () => {
     }
   };
 
-  console.log(follow);
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
+
   return (
     <>
       <Section>
@@ -65,7 +68,7 @@ const Card = () => {
           </ImageContainer>
           <TextContainer>
             <Info>777 TWEETS </Info>
-            <Info>{count} FOLLOWERS</Info>
+            <Info>{formatNumber(count)} FOLLOWERS</Info>
           </TextContainer>
           <Button filled={follow} type="button" onClick={ClickHandler}>
             {!follow ? 'FOLLOW' : 'FOLLOWING'}

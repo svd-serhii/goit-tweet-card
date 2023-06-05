@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const ListItem = styled.li``;
-
-export const ImageContainer = styled.div``;
+export const ListItem = styled.li`
+  display: flex;
+  justify-content: center;
+`;
 
 export const CardContainer = styled.div`
   width: 380px;
@@ -19,31 +20,46 @@ export const CardContainer = styled.div`
   border-radius: 20px;
 `;
 
+export const ImageContainer = styled.div`
+  position: relative;
+  width: 380px;
+  height: 258px;
+`;
+
 export const Logo = styled.img`
-  margin-top: 20px;
-  margin-left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
   width: 76px;
   height: 22px;
 `;
 
 export const Picture = styled.img`
+  position: absolute;
+  top: 36px;
+  left: 28px;
   width: 308px;
   height: 168px;
-  margin-left: 36px;
 `;
-export const Frame = styled.img`
-  width: 80px;
-  height: 80px;
-  margin-top: 0px;
-`;
-export const Avatar = styled.img`
-  width: 52px;
-  height: 52px;
-`;
-
 export const Line = styled.img`
+  position: absolute;
+  top: 214px;
   width: 380px;
   height: 8px;
+`;
+export const Frame = styled.img`
+  position: absolute;
+  top: 178px;
+  left: 150px;
+  width: 80px;
+  height: 80px;
+`;
+export const Avatar = styled.img`
+  position: absolute;
+  left: 161px;
+  top: 185px;
+  width: 58px;
+  height: 58px;
 `;
 
 export const TextContainer = styled.div``;

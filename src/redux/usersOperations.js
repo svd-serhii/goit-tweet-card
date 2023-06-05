@@ -12,3 +12,15 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
+
+export const getUser = createAsyncThunk(
+  'users/fetchById',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await API.getUserById();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
